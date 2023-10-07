@@ -5,7 +5,7 @@ import './index.css'
 
 function App() {
   const [images, setImages] = useState([]);
-  // const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([]);
 
   const api = "http://localhost:8080/api/v1/images";
   const username = "palagi";
@@ -54,8 +54,7 @@ function byteArrayToDataUrl(byteArray) {
       <h1>Upload Images</h1>
       {images.map((img, i) => (
           <div key={i}>
-              <img src={`${api}/${img.id}/content`} alt={img.name} />
-
+              <img src={byteArrayToDataUrl(img.imageBytes)} alt={img.name} />
               <p>{img.description}</p>
           </div>
       ))}
