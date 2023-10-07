@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import './index.css'
 
 function App() {
-  const [images, setImages] = useState([]);
+  // const [images, setImages] = useState([]);
   const [users, setUsers] = useState([]);
 
   const api = "http://localhost:8080/api/v1/images";
@@ -58,11 +58,11 @@ function byteArrayToDataUrl(byteArray) {
               <p>{img.description}</p>
           </div>
       ))} */}
-      <h1 className="text-9xl font-bold bg-red-700 flex">Users</h1>
+      <h1 className="text-xl font-bold text-red-500">Users</h1>
       {users.map((user, i) => (
-          <div key={i}>
-              <p>{user.name}</p>
-              <p>{user.bio}</p>
+          <div className="flex" key={i}>
+              <p className="px-5">{user.name}:</p>
+              <p className="flex-auto">{user.bio}</p>
           </div>
       ))} 
     </>
