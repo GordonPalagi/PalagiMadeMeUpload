@@ -1,25 +1,20 @@
 package photocurator.palagimademeupload.model;
 
-import lombok.Builder;
-import lombok.Data;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import java.time.LocalDateTime;
+import lombok.Builder;
+import lombok.Data;
+
 import java.util.UUID;
 
 @Builder
 @Data
-public class ImageDTO {
+public class ImageMetadataDTO {
 
     private UUID id;
-
-    @NotNull
-    @NotBlank
-    private byte[] imageBytes;
-
     private String title;
-
     private String description;
-    private LocalDateTime dateSubmitted;
-    private LocalDateTime timeSubmitted;
+    private String dateSubmitted;
+    private String timeSubmitted;
+
 }
