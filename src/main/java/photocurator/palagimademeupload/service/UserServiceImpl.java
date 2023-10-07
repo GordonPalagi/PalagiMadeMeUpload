@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
 
         UserDTO user2 = UserDTO.builder()
                 .name("Piper")
-                .bio("I am a photographer.")
+                .bio("I am a naga. ssssss..")
                 .version(1)
                 .id(UUID.randomUUID())
                 .build();

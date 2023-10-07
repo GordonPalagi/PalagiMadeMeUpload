@@ -1,6 +1,7 @@
 import "./App.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import './index.css'
 
 function App() {
   const [images, setImages] = useState([]);
@@ -36,26 +37,6 @@ function App() {
     }
   )},[])
 
-
-  // function byteArrayToDataUrl(byteArray) {
-  //   console.log("Received bytes:", byteArray);
-  //   console.log("Length of received bytes:", byteArray.length);
-
-  //   const base64 = btoa(
-  //     new Uint8Array(byteArray).reduce((data, byte) => data + String.fromCharCode(byte), "")
-  //   );
-
-  //   console.log(base64)
-  //   return `data:image/jpeg;base64,${base64}`;
-  // }
-
-//   function byteArrayToDataUrl(byteArray) {
-//     const base64 = btoa(
-//         byteArray.map(byte => String.fromCharCode(byte)).join('')
-//     );
-//     return `data:image/jpeg;base64,${base64}`;
-// }
-
 function byteArrayToDataUrl(byteArray) {
     // console.log("Received bytes:", byteArray);
     // console.log("Length of received bytes:", byteArray.length);
@@ -77,7 +58,7 @@ function byteArrayToDataUrl(byteArray) {
               <p>{img.description}</p>
           </div>
       ))} */}
-      <h1 className="text-xl font-bold bg-red-950">Users</h1>
+      <h1 className="text-9xl font-bold bg-red-700 flex">Users</h1>
       {users.map((user, i) => (
           <div key={i}>
               <p>{user.name}</p>
