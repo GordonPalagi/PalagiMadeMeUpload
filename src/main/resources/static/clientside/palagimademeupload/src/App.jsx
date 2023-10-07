@@ -77,7 +77,7 @@ function byteArrayToDataUrl(byteArray) {
               <p>{img.description}</p>
           </div>
       ))} */}
-      <h1>Users</h1>
+      <h1 className="text-xl font-bold bg-red-950">Users</h1>
       {users.map((user, i) => (
           <div key={i}>
               <p>{user.name}</p>
