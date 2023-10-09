@@ -30,22 +30,19 @@ function App() {
   }, []);
 
 
-  // useEffect(() => {
-  //   axios.get("http://localhost:8080/api/v1/users")
-  //   .then((response) => {
-  //     setUsers(response.data);
-  //   }
-  // )},[])
-
-function byteArrayToDataUrl(byteArray) {
-    // console.log("Received bytes:", byteArray);
-    // console.log("Length of received bytes:", byteArray.length);
-  const base64 = btoa(
-      Array.from(byteArray).map(byte => String.fromCharCode(byte)).join('')
-  );
-    // console.log("String: " + base64)
+  useEffect(() => {
+    axios.get("http://localhost:8080/api/v1/users")
+    .then((response) => {
+      setUsers(response.data);
+    }
+  )},[])
+  
+    
+  //This function converts a base64-encoded image to a data URL.
+  //This is necessary because the API returns the image as a base64-encoded string.
+  function base64ToDataUrl(base64) {
     return `data:image/jpeg;base64,${base64}`;
-}
+  }
 
 
 
@@ -54,17 +51,17 @@ function byteArrayToDataUrl(byteArray) {
       <h1>Upload Images</h1>
       {images.map((img, i) => (
           <div key={i}>
-              <img src={byteArrayToDataUrl(img.imageBytes)} alt={img.name} />
+              <img src={base64ToDataUrl(img.imageBytes)} alt={img.name} />
               <p>{img.description}</p>
           </div>
       ))}
-      {/* <h1 className="text-xl font-bold text-red-500">Users</h1>
+      <h1 className="text-xl font-bold text-red-500">Users</h1>
       {users.map((user, i) => (
           <div className="flex" key={i}>
               <p className="px-5">{user.name}:</p>
               <p className="flex-auto">{user.bio}</p>
           </div>
-      ))}  */}
+      ))} 
     </>
   );
 }
