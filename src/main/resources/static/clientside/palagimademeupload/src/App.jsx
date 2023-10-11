@@ -12,30 +12,37 @@ function App() {
   const password = "password";
   const basicAuth = "Basic " + btoa(username + ":" + password);
 
-  useEffect(() => {
-    axios
-      .get(api, {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Authorization: basicAuth,
-        },
-      })
-      .then((response) => {
-        setImages(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching images:", error);
-      });
-  }, []);
+
+
+ const handleImageFetch = async () => {
+  try {
+    const response = await axios.get(api, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: basicAuth,
+      },
+    });
+    setImages(response.data);
+  } catch (error) {
+    console.error("Error fetching images:", error);
+  }
+};
+
+const handleUserFetch = async () => {
+  try {
+    const response = await axios.get("http://localhost:8080/api/v1/users");
+    setUsers(response.data);
+  } catch (error) {
+    console.error("Error fetching users:", error);
+  }
+};
 
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/v1/users")
-    .then((response) => {
-      setUsers(response.data);
-    }
-  )},[])
+    handleImageFetch();
+    handleUserFetch();
+  },[])
   
     
   //This function converts a base64-encoded image to a data URL.
