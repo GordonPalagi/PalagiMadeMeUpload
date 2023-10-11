@@ -1,7 +1,6 @@
 package photocurator.palagimademeupload.service;
 
 import photocurator.palagimademeupload.model.ImageDTO;
-import photocurator.palagimademeupload.model.ImageMetadataDTO;
 
 import java.util.List;
 import java.util.Optional;
