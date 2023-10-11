@@ -7,7 +7,8 @@ function App() {
   const [images, setImages] = useState([]);
   const [users, setUsers] = useState([]);
 
-  const api = "http://localhost:8080/api/v1/images";
+  const imageApi = "http://localhost:8080/api/v1/images";
+  const userApi = "http://localhost:8080/api/v1/users";
   const username = "palagi";
   const password = "password";
   const basicAuth = "Basic " + btoa(username + ":" + password);
@@ -16,7 +17,7 @@ function App() {
 
  const handleImageFetch = async () => {
   try {
-    const response = await axios.get(api, {
+    const response = await axios.get(imageApi, {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -28,17 +29,14 @@ function App() {
     console.error("Error fetching images:", error);
   }
 };
-
 const handleUserFetch = async () => {
   try {
-    const response = await axios.get("http://localhost:8080/api/v1/users");
+    const response = await axios.get(userApi);
     setUsers(response.data);
   } catch (error) {
     console.error("Error fetching users:", error);
   }
 };
-
-
   useEffect(() => {
     handleImageFetch();
     handleUserFetch();
