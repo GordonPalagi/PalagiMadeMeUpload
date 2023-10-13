@@ -2,13 +2,9 @@ package photocurator.palagimademeupload.service;
 
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Service;
 import photocurator.palagimademeupload.model.ImageDTO;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import photocurator.palagimademeupload.repository.ImagePathBuilder;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -23,26 +19,26 @@ public class ImageServiceImpl implements ImageService {
         this.imageMap = new HashMap<>();
     }
 
-    public byte[] getImageBytes(String filePath) throws IOException {
-        File file = new File(filePath);
-        return IOUtils.toByteArray(new FileInputStream(file));
-    }
-
-
+    ImagePathBuilder imagePath = new ImagePathBuilder();
 
     @PostConstruct
-    public void init() throws IOException {
-        File file1 = new File("src/main/resources/assets/download.jpeg");
-        File file2 = new File("src/main/resources/assets/download2.jpeg");
-
-        addImage(String.valueOf(file1), "This is a picture of a cat", "Cat");
-        addImage(String.valueOf(file2), "This is another cat", "Cat");
+    public void init() {
+       addImage(imagePath.building1, "Falling Waters", "Building 1");
+       addImage(imagePath.building2, "Syndey Opera House", "Building 2");
+       addImage(imagePath.building3, "A Cat House", "Building 3");
+       addImage(imagePath.building4, "Weird rounded buildings that are kinda cool", "Building 4");
+       addImage(imagePath.building5, "A building that looks like a ship", "Building 5");
+       addImage(imagePath.building6, "A building that looks different from the others", "Building 6");
+       addImage(imagePath.building7, "A building that seems to be made of glass", "Building 7");
+       addImage(imagePath.building8, "A building that doesn't look like a building", "Building 8");
+       addImage(imagePath.building9, "A building that could be a church", "Building 9");
+       addImage(imagePath.building10, "A building that looks like a building", "Building 10");
     }
 
-    private void addImage(String imagePath, String description, String title) throws IOException {
+    private void addImage(String imagePath, String description, String title) {
         ImageDTO image = ImageDTO.builder()
                 .id(UUID.randomUUID())
-                .imageBytes(getImageBytes(imagePath))
+                .imagePath(imagePath)
                 .description(description)
                 .title(title)
                 .dateSubmitted(LocalDateTime.now())
@@ -66,7 +62,7 @@ public class ImageServiceImpl implements ImageService {
 
         ImageDTO savedImage = ImageDTO.builder()
                 .id(UUID.randomUUID())
-                .imageBytes(imageDTO.getImageBytes())
+                .imagePath(imageDTO.getImagePath())
                 .description(imageDTO.getDescription())
                 .title(imageDTO.getTitle())
                 .dateSubmitted(LocalDateTime.now())
@@ -82,7 +78,7 @@ public class ImageServiceImpl implements ImageService {
     public Optional<ImageDTO> updateBeerById(UUID imageId, ImageDTO image) {
 
         ImageDTO existingImage = imageMap.get(imageId);
-        existingImage.setImageBytes(image.getImageBytes());
+        existingImage.setDescription(image.getDescription());
         existingImage.setDescription(image.getDescription());
         existingImage.setTitle(image.getTitle());
         existingImage.setDateSubmitted(image.getDateSubmitted());

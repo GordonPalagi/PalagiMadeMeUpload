@@ -15,7 +15,7 @@ public class ImageDTO {
 
     @NotNull
     @NotBlank
-    private byte[] imageBytes;
+    private String imagePath;
 
     private String title;
 

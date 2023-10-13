@@ -14,7 +14,6 @@ function App() {
   const basicAuth = "Basic " + btoa(username + ":" + password);
 
 
-
  const handleImageFetch = async () => {
   try {
     const response = await axios.get(imageApi, {
@@ -37,29 +36,23 @@ const handleUserFetch = async () => {
     console.error("Error fetching users:", error);
   }
 };
-  useEffect(() => {
+  
+
+useEffect(() => {
     handleImageFetch();
     handleUserFetch();
   },[])
   
-    
-  //This function converts a base64-encoded image to a data URL.
-  //This is necessary because the API returns the image as a base64-encoded string.
-  function base64ToDataUrl(base64) {
-    return `data:image/jpeg;base64,${base64}`;
-  }
-
-
-
   return (
     <>
       <h1>Upload Images</h1>
       {images.map((img, i) => (
           <div key={i}>
-              <img src={base64ToDataUrl(img.imageBytes)} alt={img.name} />
+              <img src={img.imagePath} alt={img.name} />
               <p>{img.description}</p>
           </div>
       ))}
+
       <h1 className="text-xl font-bold text-red-500">Users</h1>
       {users.map((user, i) => (
           <div className="flex" key={i}>

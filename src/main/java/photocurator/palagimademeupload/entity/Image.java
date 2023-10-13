@@ -23,17 +23,17 @@ import java.util.UUID;
 @Entity
 public class Image {
     @Id
-    @GeneratedValue(generator = "UUID")
+    // @GeneratedValue(generator = "UUID")
     // @GenericGenerator(name = "UUID", type = org.hibernate.id.uuid.UuidGenerator.class)
     // deprecated as of V 6.2. Use line above in normal context.
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @JdbcTypeCode(SqlTypes.CHAR)
-    @Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
+    // @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    // @JdbcTypeCode(SqlTypes.CHAR)
+    // @Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
     private UUID id;
 
     @NotNull
     @NotBlank
-    private byte[] imageBytes;
+    private String imagePath;
 
     @NotNull
     @NotBlank
