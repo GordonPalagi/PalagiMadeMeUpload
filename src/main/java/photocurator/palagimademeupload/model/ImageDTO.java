@@ -17,6 +17,10 @@ public class ImageDTO {
     @NotBlank
     private String imagePath;
 
+    @NotNull
+    @NotBlank
+    private String studentName;
+
     private String title;
 
     private String description;

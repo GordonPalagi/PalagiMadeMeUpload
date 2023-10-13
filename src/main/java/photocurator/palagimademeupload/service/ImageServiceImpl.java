@@ -23,23 +23,24 @@ public class ImageServiceImpl implements ImageService {
 
     @PostConstruct
     public void init() {
-       addImage(imagePath.building1, "Falling Waters", "Building 1");
-       addImage(imagePath.building2, "Syndey Opera House", "Building 2");
-       addImage(imagePath.building3, "A Cat House", "Building 3");
-       addImage(imagePath.building4, "Weird rounded buildings that are kinda cool", "Building 4");
-       addImage(imagePath.building5, "A building that looks like a ship", "Building 5");
-       addImage(imagePath.building6, "A building that looks different from the others", "Building 6");
-       addImage(imagePath.building7, "A building that seems to be made of glass", "Building 7");
-       addImage(imagePath.building8, "A building that doesn't look like a building", "Building 8");
-       addImage(imagePath.building9, "A building that could be a church", "Building 9");
-       addImage(imagePath.building10, "A building that looks like a building", "Building 10");
+        addImage(imagePath.building1, imagePath.description1, imagePath.title1, "Alex Johnson");
+        addImage(imagePath.building2, imagePath.description2, imagePath.title2, "Jamie Smith");
+        addImage(imagePath.building3, imagePath.description3, imagePath.title3, "Chris Lee");
+        addImage(imagePath.building4, imagePath.description4, imagePath.title4, "Taylor Brown");
+        addImage(imagePath.building5, imagePath.description5, imagePath.title5, "Jordan Garcia");
+        addImage(imagePath.building6, imagePath.description6, imagePath.title6, "Morgan Davis");
+        addImage(imagePath.building7, imagePath.description7, imagePath.title7, "Casey Rodriguez");
+        addImage(imagePath.building8, imagePath.description8, imagePath.title8, "Riley Martinez");
+        addImage(imagePath.building9, imagePath.description9, imagePath.title9, "Jordan Wilson");
+        addImage(imagePath.building10, imagePath.description10, imagePath.title10, "Alexis Taylor");
     }
 
-    private void addImage(String imagePath, String description, String title) {
+    private void addImage(String imagePath, String description, String title, String studentName) {
         ImageDTO image = ImageDTO.builder()
                 .id(UUID.randomUUID())
                 .imagePath(imagePath)
                 .description(description)
+                .studentName(studentName)
                 .title(title)
                 .dateSubmitted(LocalDateTime.now())
                 .timeSubmitted(LocalDateTime.now())

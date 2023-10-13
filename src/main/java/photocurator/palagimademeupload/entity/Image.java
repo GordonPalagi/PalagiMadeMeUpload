@@ -33,6 +33,10 @@ public class Image {
 
     @NotNull
     @NotBlank
+    private String studentName;
+
+    @NotNull
+    @NotBlank
     private String imagePath;
 
     @NotNull
