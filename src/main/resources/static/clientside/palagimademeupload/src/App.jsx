@@ -5,7 +5,7 @@ import './index.css'
 
 function App() {
   const [images, setImages] = useState([]);
-  const [users, setUsers] = useState([]);
+  // const [users, setUsers] = useState([]);
 
   const imageApi = "http://localhost:8080/api/v1/images";
   const userApi = "http://localhost:8080/api/v1/users";
@@ -28,14 +28,14 @@ function App() {
     console.error("Error fetching images:", error);
   }
 };
-const handleUserFetch = async () => {
-  try {
-    const response = await axios.get(userApi);
-    setUsers(response.data);
-  } catch (error) {
-    console.error("Error fetching users:", error);
-  }
-};
+// const handleUserFetch = async () => {
+//   try {
+//     const response = await axios.get(userApi);
+//     setUsers(response.data);
+//   } catch (error) {
+//     console.error("Error fetching users:", error);
+//   }
+// };
   
 
 useEffect(() => {
