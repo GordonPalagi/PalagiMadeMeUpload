@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Entity
 @Table(name = "image")
-public class Images {
+public class Image {
     @Id
     private Long id;
     private String studentName;

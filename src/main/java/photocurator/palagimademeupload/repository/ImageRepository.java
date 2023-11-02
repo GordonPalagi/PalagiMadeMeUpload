@@ -1,7 +1,7 @@
 package photocurator.palagimademeupload.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import photocurator.palagimademeupload.entity.Images;
+import photocurator.palagimademeupload.entity.Image;
 
-public interface ImageRepository extends JpaRepository<Images, Long> {
+public interface ImageRepository extends JpaRepository<Image, Long> {
 }
